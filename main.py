@@ -31,11 +31,23 @@ resources = {
     "coffee": 100,
 }
 def is_resource_sufficient(order_ingredients):
+    """retuened true when ingredients are enough, false when not"""
     for item in order_ingredients:
         if  order_ingredients[item] >= resources[item] :
             print(f"Sorry there is not enough {item}.")
             return False
     return True
+
+def process_coins():
+    """returnes the total calculated coins inserted"""
+    print("Please insert coins.")
+    total = int(input("How many quarters? :")) * 0.25
+    total += int(input("How many dimes? :")) * 0.1
+    total += int(input("How many nickles? :")) * 0.05
+    total += int(input("How many pennies? :")) * 0.01
+    return total
+
+
 is_on = True
 
 while is_on:
@@ -53,4 +65,4 @@ while is_on:
         drink = MENU[userInput]
         print(drink)
         if is_resource_sufficient(drink["ingredients"]):
-            print("ok")
+            payment = process_coins()
